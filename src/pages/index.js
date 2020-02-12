@@ -7,11 +7,12 @@ import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import MainTitle from "../components/MainTitle";
+import Cards from "../components/Cards";
 
 import banner from "../assets/banner-1.jpg";
 import vase from "../assets/vase.gif";
 
-import { PRODUCTS } from "../data/home-products/index";
+import { PRODUCTS } from "../data/home/index";
 
 function Index() {
   return (
@@ -76,20 +77,31 @@ function Index() {
       </section>
 
       <section className="bg-teal-400 py-20">
-        <div className="flex-col container mx-auto px-4 flex lg:flex-row">
-          <div className="w-full md:w-1/4">1</div>
+        <div className="flex-col container mx-auto px-4 flex lg:flex-row lg:items-center">
+          <div className="w-full md:w-1/4">
+            <h4 className="text-2xl text-white italic font-light mb-4 leading-tight">
+              Confira as nossas <strong>coleções</strong> de vasos e acessórios
+            </h4>
+
+            <Link
+              to="/"
+              className="flex mb-4 bg-white text-teal-400 px-4 py-2 rounded-full uppercase justify-center text-xs transition-opacity duration-500 ease-in-out hover:opacity-75"
+            >
+              Acesse nossa loja virtual
+            </Link>
+
+            <Link
+              to="/"
+              className="flex bg-green-300 text-teal-400 px-4 py-2 rounded-full uppercase justify-center text-xs transition-opacity duration-500 ease-in-out hover:opacity-75"
+            >
+              Veja onde encontrar
+            </Link>
+          </div>
+
           <div className="w-full flex">
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
               {PRODUCTS.map(item => (
-                <Link
-                  className="p-4 transition-all duration-500 ease-in-out transform hover:-translate-y-2"
-                  to="/"
-                >
-                  <img src={item.image} alt="Product" />
-                  <p className="text-center text-lg text-yellow-400">
-                    {item.title}
-                  </p>
-                </Link>
+                <Cards {...item} />
               ))}
             </div>
           </div>
